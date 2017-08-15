@@ -2,6 +2,7 @@
   "name": "workout",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://dillonchr.webfactional.com/workout/",
   "dependencies": {
     "material-ui": "^0.18.7",
     "react": "^15.6.1",
