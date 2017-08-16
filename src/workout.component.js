@@ -6,17 +6,24 @@ export default class Workout extends Component {
     constructor(props) {
         super(props);
         this.state = {warmupsToGo: this.getWarmupsCount()};
+        this.forcedDay = this.props.day;
     }
 
     getExerciseManifesto() {
-        const day = new Date().getDay();
-        if (day >= 5) {
-            return ExercisePlan.days.friday;
+        let day;
+        if (this.props.day) {
+            day = this.props.day;
+        } else {
+            const d = new Date().getDay();
+            if (d >= 5) {
+                day = 'friday';
+            } else if (d >= 3) {
+                day = 'wednesday';
+            } else {
+                day = 'monday';
+            }
         }
-        if (day >= 3) {
-            return ExercisePlan.days.wednesday;
-        }
-        return ExercisePlan.days.monday;
+        return ExercisePlan.days[day];
     }
 
     getExercisesForDay() {
@@ -35,9 +42,14 @@ export default class Workout extends Component {
     }
 
     onComplete() {
-        this.setState({
-            warmupsToGo: this.state.warmupsToGo - 1
-        });
+        if (this.props.day !== this.forcedDay) {
+            this.forcedDay = this.props.day;
+            this.setState({warmupsToGo: this.getWarmupsCount() - 1});
+        } else {
+            this.setState({
+                warmupsToGo: this.state.warmupsToGo - 1
+            });
+        }
     }
 
     getCurrentSets() {
