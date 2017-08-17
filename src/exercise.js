@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import ExerciseSetTile from './exercise-set-tile';
+import './exercise.css';
 
 export default class Exercise extends Component {
     getTitle() {
@@ -8,41 +9,32 @@ export default class Exercise extends Component {
             .replace(/^./, s => s.toUpperCase());
     }
 
+    onExerciseSetComplete() {
+        if (this.props.warmups && this.props.onComplete) {
+            this.props.onComplete();
+        }
+    }
+
     getTiles() {
         const listName = this.props.warmups ? 'warmups' : 'sets';
         return this.props.exercise[listName]
             .map((s, i) => {
                 return (
-                    <ExerciseSetTile set={ s }
-                                     index={ i }
-                                     key={ listName + i }
-                                     onComplete={ this.props.warmups ? this.props.onComplete : () => {} } />
+                    <ExerciseSetTile 
+                        set={s}
+                        index={i}
+                        key={listName + i}
+                        onComplete={this.onExerciseSetComplete.bind(this)} />
                 );
             });
     }
 
     render() {
         return (
-            <div style={ styles.container }>
-                <p style={styles.title}>{ this.getTitle() }</p>
-                <div style={ styles.tileContainer }>
-                    { this.getTiles() }
-                </div>
+            <div className="exercise">
+                <p className="exercise__title">{this.getTitle()}</p>
+                <div className="exercise__tiles">{this.getTiles()}</div>
             </div>
         );
     }
 }
-
-const styles = {
-    container: {
-        padding: '1em'
-    },
-    title: {
-        fontSize: '1.5em',
-        fontWeight: 'bold'
-    },
-    tileContainer: {
-        display: 'flex',
-        justifyContent: 'space-between'
-    }
-};

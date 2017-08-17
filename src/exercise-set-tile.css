@@ -1,0 +1,23 @@
+.exercise-set-tile {
+    background-color: #fff;
+    border: solid 1px #888;
+    color: #000;
+    flex: 1;
+    font-size: 1.5em;
+    margin: 0 0.5em;
+    text-align: center;
+}
+
+.exercise-set-tile:first-child {
+    margin-left: 0;
+}
+
+.exercise-set-tile:last-child {
+    margin-right: 0;
+}
+
+.exercise-set-tile--done {
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+}

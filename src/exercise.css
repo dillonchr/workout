@@ -1,0 +1,13 @@
+.exercise {
+    padding: 1em;
+}
+
+.exercise__title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.exercise__tiles {
+    display: flex;
+    justifyContent: space-between;
+}
