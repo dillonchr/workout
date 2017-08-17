@@ -26,63 +26,153 @@ const ExercisePlan = {
         ]
     },
     "exercises": {
-        "squat": {
-            "warmups": [0,0,25],
-            "sets": ["45 + 2.5","45 + 2.5","45 + 2.5"]
-        },
-        "calfRaise": {
-            "sets":[10,10,10]
-        },
-        "overheadPress": {
-            "warmups": [0,0,20],
-            "sets": [5,5,5]
-        },
-        "skullCrusher": {
-            "sets": [45,45,45]
-        },
-        "crunch": {
-            "sets": [0,0,0]
-        },
-        "powerClean": {
-            "warmups": [5,5,25],
-            "sets": [25,25,25]
-        },
-        "deadlifts": {
-            "warmups": [45],
-            "sets": [45,"45 + 10","45 + 25"]
-        },
-        "lunges": {
-            "sets": [0,0,0]
-        },
-        "benchPress": {
-            "warmups": [0,10,20],
-            "sets": [20,20,20]
-        },
-        "pushup": {
-            "sets": [0,0,0]
-        },
-        "ankleTouch": {
-            "sets": [0,0,0]
-        },
-        "squatJump": {
-            "sets": [0,0,0]
-        },
-        "goodMorning": {
-            "sets": [10,10,10]
-        },
-        "pendlay": {
-            "warmups": [0,0,10],
-            "sets": [15,15,15]
-        },
-        "curling": {
-            "sets": [5,5,5]
-        },
-        "sidePlank": {
-            "sets": [0,0,0]
-        },
-        "burpees": {
-            "sets": [0,0,0]
-        }
+       "squat":{
+          "warmups":[
+             45,
+             45,
+             95
+          ],
+          "sets":[
+             140,
+             140,
+             140
+          ]
+       },
+       "calfRaise":{
+          "sets":[
+             65,
+             65,
+             65
+          ]
+       },
+       "overheadPress":{
+          "warmups":[
+             45,
+             45,
+             85
+          ],
+          "sets":[
+             55,
+             55,
+             55
+          ]
+       },
+       "skullCrusher":{
+          "sets":[
+             135,
+             135,
+             135
+          ]
+       },
+       "crunch":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       },
+       "powerClean":{
+          "warmups":[
+             55,
+             55,
+             95
+          ],
+          "sets":[
+             95,
+             95,
+             95
+          ]
+       },
+       "deadlifts":{
+          "warmups":[
+             135
+          ],
+          "sets":[
+             135,
+             155,
+             185
+          ]
+       },
+       "lunges":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       },
+       "benchPress":{
+          "warmups":[
+             45,
+             65,
+             85
+          ],
+          "sets":[
+             85,
+             85,
+             85
+          ]
+       },
+       "pushup":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       },
+       "ankleTouch":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       },
+       "squatJump":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       },
+       "goodMorning":{
+          "sets":[
+             65,
+             65,
+             65
+          ]
+       },
+       "pendlay":{
+          "warmups":[
+             45,
+             45,
+             65
+          ],
+          "sets":[
+             75,
+             75,
+             75
+          ]
+       },
+       "curling":{
+          "sets":[
+             55,
+             55,
+             55
+          ]
+       },
+       "sidePlank":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       },
+       "burpees":{
+          "sets":[
+             0,
+             0,
+             0
+          ]
+       }
     }
 };
 
