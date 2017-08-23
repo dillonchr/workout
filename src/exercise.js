@@ -21,9 +21,10 @@ export default class Exercise extends Component {
             .map((s, i) => {
                 return (
                     <ExerciseSetTile 
-                        set={s}
+                        set={listName === 'warmups' ? s : -1}
                         index={i}
                         key={listName + i}
+                        name={this.props.exercise.name}
                         onComplete={this.onExerciseSetComplete.bind(this)} />
                 );
             });

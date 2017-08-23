@@ -70,10 +70,14 @@ export default class Workout extends Component {
     }
 
     render() {
+        if (!this.props.show) {
+            return null;
+        }
+
         const workouts = this.getCurrentSets()
-            .map((w, i) => {
+            .map(w => {
                 return (
-                    <Exercise key={i}
+                    <Exercise key={w.name}
                               exercise={w}
                               warmups={this.state.warmupsToGo > 0}
                               onComplete={this.onComplete.bind(this)} />

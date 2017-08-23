@@ -1,3 +1,5 @@
+import ExercisePlan from './exercise-plan';
+
 export default class UserSettings {
     static get(key) {
         return window.localStorage.getItem(key);
@@ -20,5 +22,17 @@ export default class UserSettings {
             5: 2,
             '2.5': 1
         };
-    }    
+    }
+
+    static updatePlateCount(plate, count) {
+        return window.localStorage.setItem('weights', JSON.stringify(Object.assign({}, UserSettings.availablePlates, {[plate]: count})));
+    }
+
+    static getExerciseWeight(key) {
+        return UserSettings.get(key) || ExercisePlan.exercises[key].set || 0;
+    }
+
+    static save(key, value) {
+        return window.localStorage.setItem(key, value);
+    }   
 }

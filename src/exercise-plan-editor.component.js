@@ -12,9 +12,15 @@ export default class ExercisePlanEditor extends Component {
                     key: k,
                     displayName: k.replace(/([A-Z])/g, ' $1')
                         .replace(/^./, s => s.toUpperCase()),
-                    weight: UserSettings.get(k) || ExercisePlan.exercises[k].sets[0]
+                    weight: UserSettings.getExerciseWeight(k)
+                })),
+            bar: UserSettings.barWeight,
+            plates: Object.keys(UserSettings.availablePlates)
+                .map(k => ({
+                    weight: k,
+                    count: UserSettings.availablePlates[k]
                 }))
-        }
+        };
     }
 
     updateWeight(key, value) {
@@ -22,30 +28,64 @@ export default class ExercisePlanEditor extends Component {
         copy.find(o => o.key === key).weight = value;
         this.setState({
             sets: copy
-        });
+        }, () => UserSettings.save(key, value));
+    }
+
+    getInput(key, weight, displayName, onChange) {
+        return (
+            <div className="plan-editor__field" key={key}>
+                 <label htmlFor={key}
+                        className="plan-editor__label">{displayName}</label>
+                 <input type="number"
+                        className="plan-editor__input"
+                        id={key}
+                        value={weight}
+                        onChange={onChange}
+                        step="5"
+                        min="0" />
+            </div>
+        );
+    }
+
+    getSectionHeading(name) {
+        return <p className="plan-editor__heading">{name}</p>;
     }
 
     getSets() {
         return this.state.sets
-            .map(s => {
-                return <div className="plan-editor__field" key={s.key}>
-                     <label htmlFor={s.key}
-                            className="plan-editor__label">{s.displayName}</label>
-                     <input type="number"
-                            className="plan-editor__input"
-                            id={s.key}
-                            value={s.weight}
-                            onChange={i => this.updateWeight(s.key, +i.currentTarget.value)}
-                            step="5"
-                            min="0" />
-                </div>;
-            });
+            .map(s => this.getInput(s.key, s.weight, s.displayName, i => this.updateWeight(s.key, +i.currentTarget.value)));
+    }
+
+    updatePlateCount(weight, count) {
+        const copy = Array.from(this.state.plates);
+        copy.find(p => p.weight === weight).count = count;
+        this.setState({plates: copy});
+    }
+
+    getAvailablePlates() {
+        return this.state.plates
+            .map(p => this.getInput(p.weight, p.count, p.weight, i => this.updatePlateCount(p.weight, +i.currentTarget.value)));
     }
 
     render() {
+        if (!this.props.show) {
+            return null;
+        }
+
         return (
             <div className="plan-editor">
-                {this.getSets()}
+                <div className="plan-editor__section plan-editor__section--single-input">
+                    {this.getSectionHeading('Bar')}
+                    {this.getInput('bar', this.state.bar, '', i => this.setState({bar: +i.currentTarget.value}))}
+                </div>
+                <div className="plan-editor__section">
+                    {this.getSectionHeading('Plates')}
+                    {this.getAvailablePlates()}
+                </div>
+                <div className="plan-editor__section">
+                    {this.getSectionHeading('Exercise Sets')}
+                    {this.getSets()}
+                </div>
             </div>
         );
     }

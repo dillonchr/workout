@@ -6,7 +6,7 @@ export default class ExerciseSetTile extends Component {
     state = {done: false};
 
     getPlates() {
-        const weight = this.props.set;
+        const weight = this.props.set >= 0 ? this.props.set : UserSettings.getExerciseWeight(this.props.name);
         if (weight > 0) {
             const plates = [];
             const bar = UserSettings.barWeight;

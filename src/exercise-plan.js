@@ -27,152 +27,48 @@ const ExercisePlan = {
     },
     "exercises": {
        "squat":{
-          "warmups":[
-             45,
-             45,
-             95
-          ],
-          "sets":[
-             140,
-             140,
-             140
-          ]
+          "base": 45,
+          "set": 140
        },
        "calfRaise":{
-          "sets":[
-             65,
-             65,
-             65
-          ]
+          "set": 25
        },
        "overheadPress":{
-          "warmups":[
-             45,
-             55,
-             60
-          ],
-          "sets":[
-             65,
-             65,
-             65
-          ]
+          "base": 45,
+          "set": 65
        },
        "skullCrusher":{
-          "sets":[
-             135,
-             135,
-             135
-          ]
+          "set": 45
        },
-       "crunch":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       },
+       "crunch":{},
        "powerClean":{
-          "warmups":[
-             55,
-             55,
-             95
-          ],
-          "sets":[
-             95,
-             95,
-             95
-          ]
+          "base": 45,
+          "set": 95
        },
        "deadlifts":{
-          "warmups":[
-             135
-          ],
-          "sets":[
-             135,
-             155,
-             185
-          ]
+          "base": 135,
+          "set": 185
        },
-       "lunges":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       },
+       "lunges":{},
        "benchPress":{
-          "warmups":[
-             45,
-             65,
-             85
-          ],
-          "sets":[
-             85,
-             85,
-             85
-          ]
+          "base": 45,
+          "set": 85
        },
-       "pushup":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       },
-       "ankleTouch":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       },
-       "squatJump":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       },
+       "pushup":{},
+       "ankleTouch":{},
+       "squatJump":{},
        "goodMorning":{
-          "sets":[
-             65,
-             65,
-             65
-          ]
+          "set": 65
        },
        "pendlay":{
-          "warmups":[
-             45,
-             45,
-             65
-          ],
-          "sets":[
-             75,
-             75,
-             75
-          ]
+          "base": 45,
+          "set": 75
        },
        "curling":{
-          "sets":[
-             55,
-             55,
-             55
-          ]
+          "set": 55
        },
-       "sidePlank":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       },
-       "burpees":{
-          "sets":[
-             0,
-             0,
-             0
-          ]
-       }
+       "sidePlank":{},
+       "burpees":{}
     }
 };
 
