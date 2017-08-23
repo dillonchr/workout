@@ -5,6 +5,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Workout from './workout.component';
 import { Subject } from 'rxjs';
+import ExercisePlanEditor from './exercise-plan-editor.component';
 
 class App extends Component {
     dayChange$ = new Subject();
@@ -49,6 +50,7 @@ class App extends Component {
                     <MenuItem onClick={this.forceDay.bind(this, 'wednesday')}>Wednesday</MenuItem>
                     <MenuItem onClick={this.forceDay.bind(this, 'friday')}>Friday</MenuItem>
                 </Drawer>
+                <ExercisePlanEditor />
                 <Workout dayChange={this.dayChange$.asObservable()} />
             </div>
         );

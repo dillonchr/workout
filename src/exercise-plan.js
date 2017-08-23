@@ -48,13 +48,13 @@ const ExercisePlan = {
        "overheadPress":{
           "warmups":[
              45,
-             45,
-             85
+             55,
+             60
           ],
           "sets":[
-             55,
-             55,
-             55
+             65,
+             65,
+             65
           ]
        },
        "skullCrusher":{

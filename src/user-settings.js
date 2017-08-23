@@ -20,6 +20,5 @@ export default class UserSettings {
             5: 2,
             '2.5': 1
         };
-    }
-    
+    }    
 }
