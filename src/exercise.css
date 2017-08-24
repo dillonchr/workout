@@ -1,13 +1,15 @@
 .exercise {
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .exercise__title {
     font-size: 1.5em;
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 .exercise__tiles {
     display: flex;
-    justifyContent: space-between;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

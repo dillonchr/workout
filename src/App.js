@@ -5,10 +5,14 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Workout from './workout.component';
 import { Subject } from 'rxjs';
+import ExercisePlanEditor from './exercise-plan-editor.component';
 
 class App extends Component {
     dayChange$ = new Subject();
-    state = {open: false};
+    state = {
+        open: false,
+        showPlanEditor: false
+    };
 
     getDayOfWeek() {
         if (this.state.day) {
@@ -36,7 +40,28 @@ class App extends Component {
         this.dayChange$.next(day);
     }
 
+    showPlanEditor() {
+        this.setState({
+            open: false,
+            showPlanEditor: true
+        });
+    }
+
+    savePlan() {
+        this.setState({
+            open: false,
+            showPlanEditor: false
+        });
+    }
+
     render() {
+        let editPlanMenuButton;
+        if (this.state.showPlanEditor) {
+            editPlanMenuButton = <MenuItem onClick={this.savePlan.bind(this)}>Save Weights</MenuItem>;
+        } else {
+            editPlanMenuButton = <MenuItem onClick={this.showPlanEditor.bind(this)}>Edit Weights</MenuItem>;
+        }
+
         return (
             <div>
                 <AppBar 
@@ -48,8 +73,10 @@ class App extends Component {
                     <MenuItem onClick={this.forceDay.bind(this, 'monday')}>Monday</MenuItem>
                     <MenuItem onClick={this.forceDay.bind(this, 'wednesday')}>Wednesday</MenuItem>
                     <MenuItem onClick={this.forceDay.bind(this, 'friday')}>Friday</MenuItem>
+                    {editPlanMenuButton}
                 </Drawer>
-                <Workout dayChange={this.dayChange$.asObservable()} />
+                <ExercisePlanEditor show={this.state.showPlanEditor} />
+                <Workout show={!this.state.showPlanEditor} dayChange={this.dayChange$.asObservable()} />
             </div>
         );
     }

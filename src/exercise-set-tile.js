@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import UserSettings from './user-settings';
 import './exercise-set-tile.css';
+import FitnessCenter from 'material-ui/svg-icons/places/fitness-center';
+import DirectionsRun from 'material-ui/svg-icons/maps/directions-run';
 
 export default class ExerciseSetTile extends Component {
     state = {done: false};
 
     getPlates() {
-        const weight = this.props.set;
+        const weight = this.props.set >= 0 ? this.props.set : UserSettings.getExerciseWeight(this.props.name);
         if (weight > 0) {
             const plates = [];
             const bar = UserSettings.barWeight;
@@ -31,9 +33,25 @@ export default class ExerciseSetTile extends Component {
                 }
             }
 
-            return plates.join(' + ') || 'Bar';
+            if (plates.length) {
+                return plates.map((p, i) => this.getWeightElement(p, i));
+            }
+
+            return this.getWeightElement(<FitnessCenter style={this.getIconStyle()} />);
         }
-        return '---';
+        return this.getWeightElement(<DirectionsRun style={this.getIconStyle()} />);
+    }
+
+    getWeightElement(content, i = 0) {
+        return <div key={i} className="exercise-set-tile__weight">{content}</div>;
+    }
+
+    getIconStyle() {
+        let color = '#000';
+        if (this.state.done) {
+            color = '#fff';
+        }
+        return {fill: color};
     }
 
     onClick() {
