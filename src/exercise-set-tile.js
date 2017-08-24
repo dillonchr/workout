@@ -33,9 +33,17 @@ export default class ExerciseSetTile extends Component {
                 }
             }
 
-            return plates.join(' + ') || <FitnessCenter style={this.getIconStyle()} />;
+            if (plates.length) {
+                return plates.map((p, i) => this.getWeightElement(p, i));
+            }
+
+            return this.getWeightElement(<FitnessCenter style={this.getIconStyle()} />);
         }
-        return <DirectionsRun style={this.getIconStyle()} />;
+        return this.getWeightElement(<DirectionsRun style={this.getIconStyle()} />);
+    }
+
+    getWeightElement(content, i = 0) {
+        return <div key={i} className="exercise-set-tile__weight">{content}</div>;
     }
 
     getIconStyle() {

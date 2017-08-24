@@ -1,5 +1,5 @@
 .exercise {
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .exercise__title {
@@ -11,5 +11,5 @@
 .exercise__tiles {
     display: flex;
     flex-wrap: wrap;
-    justifyContent: space-between;
+    justify-content: space-between;
 }
