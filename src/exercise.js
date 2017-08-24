@@ -15,15 +15,45 @@ export default class Exercise extends Component {
         }
     }
 
+    getWarmupArrayFor(n) {
+        return new Array(n).fill(this.props.exercise)
+                .map((x, i) => {
+                    if (i < 2) {
+                        return x.base;
+                    }
+                    if (i === 2) {
+                        return x.base + ((x.set - x.base) >> 1);
+                    }
+                    return x.set;
+                });
+    }
+
+    getWarmupsForExercise() {
+        if (this.props.exercise.name === 'deadlifts') {
+            return [this.props.exercise.base];
+        } else if (this.props.exercise.name === 'benchPress') {
+            return this.getWarmupArrayFor(6);
+        } else {
+            return this.getWarmupArrayFor(3);
+        }
+    }
+
+    getSetsForExercise() {
+        if (this.props.exercise.name === 'benchPress') {
+            return [];
+        }
+        return new Array(3).fill(this.props.exercise.set);
+    }
+
     getTiles() {
-        const listName = this.props.warmups ? 'warmups' : 'sets';
-        return this.props.exercise[listName]
+        const list = this.props.warmups ? this.getWarmupsForExercise() : this.getSetsForExercise();
+        return list
             .map((s, i) => {
                 return (
                     <ExerciseSetTile 
-                        set={listName === 'warmups' ? s : -1}
+                        set={s}
                         index={i}
-                        key={listName + i}
+                        key={(this.props.warmups ? 'w' : 's') + i}
                         name={this.props.exercise.name}
                         onComplete={this.onExerciseSetComplete.bind(this)} />
                 );

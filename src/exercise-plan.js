@@ -21,8 +21,8 @@ const ExercisePlan = {
             "goodMorning",
             "pendlay",
             "curling",
-            "sidePlank",
-            "burpees"
+            "sidePlank"
+            // ,"burpees"
         ]
     },
     "exercises": {

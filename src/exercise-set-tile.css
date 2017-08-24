@@ -1,18 +1,23 @@
 .exercise-set-tile {
+    align-items: center;
     background-color: #fff;
     border: solid 1px #888;
     color: #000;
-    flex: 1;
+    display: flex;
+    flex: 1 1 calc(33.33333% - 1em);
     font-size: 1.5em;
-    margin: 0 0.5em;
+    justify-content: center;
+    margin: 0.5em;
     text-align: center;
 }
 
-.exercise-set-tile:first-child {
+.exercise-set-tile:nth-child(1),
+.exercise-set-tile:nth-child(4) {
     margin-left: 0;
 }
 
-.exercise-set-tile:last-child {
+.exercise-set-tile:nth-child(3),
+.exercise-set-tile:nth-child(6) {
     margin-right: 0;
 }
 

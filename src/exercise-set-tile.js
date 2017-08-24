@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import UserSettings from './user-settings';
 import './exercise-set-tile.css';
+import FitnessCenter from 'material-ui/svg-icons/places/fitness-center';
+import DirectionsRun from 'material-ui/svg-icons/maps/directions-run';
 
 export default class ExerciseSetTile extends Component {
     state = {done: false};
@@ -31,9 +33,17 @@ export default class ExerciseSetTile extends Component {
                 }
             }
 
-            return plates.join(' + ') || 'Bar';
+            return plates.join(' + ') || <FitnessCenter style={this.getIconStyle()} />;
         }
-        return '---';
+        return <DirectionsRun style={this.getIconStyle()} />;
+    }
+
+    getIconStyle() {
+        let color = '#000';
+        if (this.state.done) {
+            color = '#fff';
+        }
+        return {fill: color};
     }
 
     onClick() {

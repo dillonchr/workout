@@ -57,9 +57,9 @@ class App extends Component {
     render() {
         let editPlanMenuButton;
         if (this.state.showPlanEditor) {
-            editPlanMenuButton = <MenuItem onClick={this.savePlan.bind(this)}>Save Plan</MenuItem>;
+            editPlanMenuButton = <MenuItem onClick={this.savePlan.bind(this)}>Save Weights</MenuItem>;
         } else {
-            editPlanMenuButton = <MenuItem onClick={this.showPlanEditor.bind(this)}>Edit Plan</MenuItem>;
+            editPlanMenuButton = <MenuItem onClick={this.showPlanEditor.bind(this)}>Edit Weights</MenuItem>;
         }
 
         return (

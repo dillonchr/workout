@@ -48,12 +48,24 @@ export default class Workout extends Component {
 
     getWarmupsForDay(day) {
         return this.getExercisesForDay(day)
-            .filter(x => x.warmups);
+            .filter(x => !!x.base);
+    }
+
+    getWarmupsForExercise(x) {
+        if (x.name === 'deadlifts') {
+            return 1;
+        } else if (x.name === 'benchPress') {
+            return 6;
+        } else if (!x.base) {
+            return 0;
+        } else {
+            return 3;
+        }
     }
 
     getWarmupsCount(day) {
         return this.getWarmupsForDay(day)
-            .reduce((sum, x) => sum + x.warmups.length, 0);
+            .reduce((sum, x) => sum + this.getWarmupsForExercise(x), 0);
     }
 
     onComplete() {
@@ -66,7 +78,8 @@ export default class Workout extends Component {
         if (this.state.warmupsToGo > 0) {
             return this.getWarmupsForDay();
         }
-        return this.getExercisesForDay();
+        return this.getExercisesForDay()
+            .filter(x => x.name !== 'benchPress');
     }
 
     render() {

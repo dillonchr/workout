@@ -9,6 +9,10 @@ export default class UserSettings {
         return this.get('bar') || 45;
     }
 
+    static set barWeight(w) {
+        return this.save('bar', w);
+    }
+
     static get availablePlates() {
         const storedPlates = this.get('weights');
         if (storedPlates) {
